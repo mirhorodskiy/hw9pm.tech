@@ -5,7 +5,17 @@ services:
     ports:
       - 8080:8080
     networks:
+    - myApp
+  db:
+    image: oscarfonts/h2
+    restart: always
+    volumes:
+      - h2-data:/opt/h2-data
+    networks:
       - myApp
-
+    ports:
+      - "8081"
+volumes:
+  h2-data:
 networks:
   myApp:
